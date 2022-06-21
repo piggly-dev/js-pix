@@ -28,3 +28,16 @@ export function CRC16(payload: string): string {
 export function cleanString(value: string): string {
 	return deburr(value);
 }
+
+export function random(): string {
+	const chars =
+		'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	const len = chars.length;
+	let random = '';
+
+	for (let i = 0; i < 25; i++) {
+		random += chars[Math.round(Math.random() * len)];
+	}
+
+	return random;
+}

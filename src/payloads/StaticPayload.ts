@@ -1,8 +1,9 @@
 import Field from '@/emv/Field';
 import MPM from '@/emv/MPM';
 import MultiField from '@/emv/MultiField';
+import Parser from '@/pix/Parser';
 import { TOrUndefined } from '@/types';
-import { cleanString } from '@/utils';
+import { cleanString, random } from '@/utils';
 import AbstractPayload from './AbstractPayload';
 
 export default class StaticPayload extends AbstractPayload {
@@ -47,9 +48,15 @@ export default class StaticPayload extends AbstractPayload {
 		return this;
 	}
 
-	public tid(tid: string) {
-		// TODO :: parse tid
-		this.mpm.get<MultiField>(62)?.get<Field>(5)?.applyValue(tid);
+	public tid(tid: TOrUndefined<string> = undefined) {
+		if (tid === undefined) {
+			tid = random();
+		}
+
+		this.mpm
+			.get<MultiField>(62)
+			?.get<Field>(5)
+			?.applyValue(Parser.tid(tid));
 
 		return this;
 	}
