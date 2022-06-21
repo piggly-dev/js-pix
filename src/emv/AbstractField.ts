@@ -31,6 +31,11 @@ export default abstract class AbstractField {
 		return this.size;
 	}
 
+	public mandatory() {
+		this.required = true;
+		return this;
+	}
+
 	public isRequired(): boolean {
 		return this.required;
 	}

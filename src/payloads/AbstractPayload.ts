@@ -12,21 +12,21 @@ export default abstract class AbstractPayload {
 	public merchantName(merchantName: string) {
 		this.mpm
 			.get<Field>(59)
-			?.applyValue(cleanString(merchantName.toUpperCase()));
+			?.applyValue(cleanString(merchantName).toUpperCase());
 		return this;
 	}
 
 	public merchantCity(merchantCity: string) {
 		this.mpm
 			.get<Field>(60)
-			?.applyValue(cleanString(merchantCity.toUpperCase()));
+			?.applyValue(cleanString(merchantCity).toUpperCase());
 		return this;
 	}
 
 	public postalCode(postalCode: string) {
 		this.mpm
 			.get<Field>(61)
-			?.applyValue(cleanString(postalCode.toUpperCase()));
+			?.applyValue(cleanString(postalCode).toUpperCase());
 		return this;
 	}
 

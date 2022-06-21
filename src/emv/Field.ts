@@ -34,6 +34,11 @@ export default class Field extends AbstractField {
 		return this;
 	}
 
+	public applyDefault(value: string) {
+		this.defValue = value;
+		return this;
+	}
+
 	public getDefaultValue(): TOrUndefined<string> {
 		return this.defValue;
 	}

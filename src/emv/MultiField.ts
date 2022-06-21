@@ -1,5 +1,5 @@
 import InvalidEmvFieldError from '@/errors/InvalidEmvFieldError';
-import { TOrUndefined } from '@/types';
+import { TEMVAvailableFields, TOrUndefined } from '@/types';
 import AbstractField from './AbstractField';
 
 export default class MultiField extends AbstractField {
@@ -58,8 +58,8 @@ export default class MultiField extends AbstractField {
 		return this;
 	}
 
-	public get(id: number): TOrUndefined<AbstractField> {
-		return this.fields.find(v => v.getId() === id);
+	public get<F = TEMVAvailableFields>(id: number): TOrUndefined<F> {
+		return this.fields.find(v => v.getId() === id) as F;
 	}
 
 	public has(id: number): boolean {

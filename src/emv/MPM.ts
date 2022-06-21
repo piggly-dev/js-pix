@@ -36,6 +36,24 @@ export default class MPM {
 				true
 			),
 		];
+
+		(this.get<MultiField>(26) as MultiField)
+			.add(
+				new Field(
+					0,
+					'Globally Unique Identifier',
+					32,
+					true,
+					'br.gov.bcb.pix'
+				)
+			)
+			.add(new Field(1, 'Pix Key', 36, false))
+			.add(new Field(2, 'Payment Description', 40, false))
+			.add(new Field(25, 'Payment URL', 77, false));
+
+		(this.get<MultiField>(62) as MultiField).add(
+			new Field(5, 'Reference Label', 25, false)
+		);
 	}
 
 	public get<F = TEMVAvailableFields>(id: number): TOrUndefined<F> {
