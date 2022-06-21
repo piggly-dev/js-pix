@@ -1,8 +1,10 @@
 import Field from '@/emv/Field';
 import MPM from '@/emv/MPM';
 import MultiField from '@/emv/MultiField';
+import PixKeyTypeEnum from '@/enums/PixKeyTypeEnum';
 import Parser from '@/pix/Parser';
-import { TOrUndefined } from '@/types';
+import Validator from '@/pix/Validator';
+import { TOrUndefined, TValueOf } from '@/types';
 import { cleanString, random } from '@/utils';
 import AbstractPayload from './AbstractPayload';
 
@@ -24,9 +26,12 @@ export default class StaticPayload extends AbstractPayload {
 		return this;
 	}
 
-	public pixKey(type: string, key: string) {
-		// TODO :: key parser
-		this.mpm.get<MultiField>(26)?.get<Field>(1)?.applyValue(key);
+	public pixKey(type: TValueOf<typeof PixKeyTypeEnum>, key: string) {
+		Validator.validate(type, key);
+		this.mpm
+			.get<MultiField>(26)
+			?.get<Field>(1)
+			?.applyValue(Parser.parse(type, key));
 		return this;
 	}
 

@@ -76,6 +76,13 @@ export default class MPM {
 		return this;
 	}
 
+	public copy(): MPM {
+		const mpm = new MPM();
+
+		mpm.emvs = [...this.emvs];
+		return mpm;
+	}
+
 	public export(): string {
 		if (this.codeCache) {
 			return this.codeCache;
