@@ -1,6 +1,6 @@
 import InvalidEmvFieldError from '@/errors/InvalidEmvFieldError';
 import { TOrUndefined } from '@/types';
-import { AbstractField } from './AbstractField';
+import AbstractField from './AbstractField';
 
 export default class Field extends AbstractField {
 	protected value: TOrUndefined<string>;
