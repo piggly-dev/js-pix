@@ -5,12 +5,18 @@ export abstract class AbstractField {
 	protected id: string;
 	protected name: string;
 	protected size: number;
-	protected required = false;
+	protected required: boolean;
 
-	constructor(id: string, name: string, size: number) {
+	constructor(
+		id: string,
+		name: string,
+		size: number = 99,
+		required: boolean = false
+	) {
 		this.id = id;
 		this.name = name;
 		this.size = size;
+		this.required = required;
 	}
 
 	public getId(): string {
