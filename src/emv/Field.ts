@@ -7,7 +7,7 @@ export default class Field extends AbstractField {
 	protected defValue: TOrUndefined<string>;
 
 	constructor(
-		id: string,
+		id: number,
 		name: string,
 		size: number = 99,
 		required: boolean = false,

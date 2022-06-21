@@ -2,13 +2,13 @@ import InvalidEmvFieldError from '@/errors/InvalidEmvFieldError';
 import { TOrUndefined } from '@/types';
 
 export default abstract class AbstractField {
-	protected id: string;
+	protected id: number;
 	protected name: string;
 	protected size: number;
 	protected required: boolean;
 
 	constructor(
-		id: string,
+		id: number,
 		name: string,
 		size: number = 99,
 		required: boolean = false
@@ -19,7 +19,7 @@ export default abstract class AbstractField {
 		this.required = required;
 	}
 
-	public getId(): string {
+	public getId(): number {
 		return this.id;
 	}
 
@@ -39,7 +39,10 @@ export default abstract class AbstractField {
 		const v = this.getValue();
 
 		if (v) {
-			return `${this.id}${v.padStart(2, '0')}${v}`;
+			return `${this.id.toString().padStart(2, '0')}${v.padStart(
+				2,
+				'0'
+			)}${v}`;
 		}
 
 		if (this.required) {

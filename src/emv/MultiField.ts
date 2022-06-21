@@ -9,7 +9,7 @@ export default class MultiField extends AbstractField {
 	protected fields: Array<AbstractField> = [];
 
 	constructor(
-		id: string,
+		id: number,
 		minid: number,
 		maxid: number,
 		name: string,
@@ -34,17 +34,17 @@ export default class MultiField extends AbstractField {
 		if (this.has(field.getId())) {
 			throw new InvalidEmvFieldError(
 				field.getName(),
-				field.getId(),
+				field.getId().toString(),
 				`O ID do campo já existe no campo pai "${this.name}"`
 			);
 		}
 
-		const id = parseInt(field.getId());
+		const id = field.getId();
 
 		if (id < this.minid || id > this.maxid) {
 			throw new InvalidEmvFieldError(
 				field.getName(),
-				field.getId(),
+				field.getId().toString(),
 				`O ID do campo não está dentro do limite de "${this.minid}" até "${this.maxid}" aceito pelo campo pai "${this.name}"`
 			);
 		}
@@ -53,16 +53,16 @@ export default class MultiField extends AbstractField {
 		return this;
 	}
 
-	public remove(id: string): MultiField {
+	public remove(id: number): MultiField {
 		this.fields = this.fields.filter(v => v.getId() !== id);
 		return this;
 	}
 
-	public get(id: string): TOrUndefined<AbstractField> {
+	public get(id: number): TOrUndefined<AbstractField> {
 		return this.fields.find(v => v.getId() === id);
 	}
 
-	public has(id: string): boolean {
+	public has(id: number): boolean {
 		return this.fields.find(v => v.getId() === id) !== undefined;
 	}
 }
