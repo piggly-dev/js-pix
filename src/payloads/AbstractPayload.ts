@@ -1,6 +1,10 @@
+import QRCode from 'qrcode';
+
 import Field from '@/emv/Field';
 import MPM from '@/emv/MPM';
 import { cleanString } from '@/utils';
+import { TValueOf } from '@/types';
+import QRCodeEnum from '@/enums/QRCodeEnum';
 
 export default abstract class AbstractPayload {
 	protected mpm;
@@ -32,6 +36,13 @@ export default abstract class AbstractPayload {
 
 	public pixCode(): string {
 		return this.mpm.export();
+	}
+
+	public async qrCode(ecc: TValueOf<typeof QRCodeEnum>): Promise<string> {
+		return await QRCode.toString(this.pixCode(), {
+			type: 'svg',
+			errorCorrectionLevel: ecc,
+		});
 	}
 
 	public getMPM(): MPM {
