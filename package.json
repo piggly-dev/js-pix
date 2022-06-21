@@ -6,7 +6,7 @@
 		"pix",
 		"bb",
 		"emv",
-		"brasil",
+		"brasil"
 	],
 	"scripts": {
 		"ts:check": "tsc --noEmit",
