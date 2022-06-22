@@ -1,10 +1,9 @@
 {
 	"compilerOptions": {
 		"target": "esnext",
-		"module": "commonjs",
+		"module": "esnext",
 		"strict": true,
 		"declaration": true,
-		"declarationDir": "./build/types",
 		"noUnusedLocals": false,
 		"noUnusedParameters": false,
 		"importHelpers": true,
@@ -17,7 +16,7 @@
 		"resolveJsonModule": true,
 		"baseUrl": ".",
 		"rootDir": ".",
-		"outDir": "./build",
+		"outDir": "./dist",
 		"paths": {
 			"@/*": [
 				"src/*",
@@ -34,6 +33,7 @@
 		],
 		"lib": [
 			"esnext",
+         "dom"
 		],
 		"typeRoots": [
 			"<rootDir>/src/types",

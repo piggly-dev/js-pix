@@ -57,7 +57,7 @@ export default class MPM {
 	}
 
 	public get<F = TEMVAvailableFields>(id: number): TOrUndefined<F> {
-		return this.emvs.find(v => v.getId() === id) as F;
+		return this.emvs.find(v => v.getId() === id) as TOrUndefined<F>;
 	}
 
 	public remove(id: number): MPM {

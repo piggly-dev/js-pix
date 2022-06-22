@@ -59,7 +59,7 @@ export default class MultiField extends AbstractField {
 	}
 
 	public get<F = TEMVAvailableFields>(id: number): TOrUndefined<F> {
-		return this.fields.find(v => v.getId() === id) as F;
+		return this.fields.find(v => v.getId() === id) as TOrUndefined<F>;
 	}
 
 	public has(id: number): boolean {
